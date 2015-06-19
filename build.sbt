@@ -19,9 +19,6 @@ lazy val root = (project in file(".")).settings(
   ),
   libraryDependencies ++= Seq(
     "org.scalaz"        %% "scalaz-core"       % "7.1.1",
-    "org.scalatra"      %% "scalatra"          % scalatraVersion,
-    "org.scalatra"      %% "scalatra-scalate"  % scalatraVersion,
-    "org.scalatra"      %% "scalatra-specs2"   % scalatraVersion % "test",
     "org.scalatest"     %% "scalatest"         % "2.2.1"         % "test",
     "org.eclipse.jetty" %  "jetty-webapp"      % "9.3.0.M2"      % "container;compile",
     "javax.servlet"     %  "javax.servlet-api" % "3.1.0"         % "provided",
