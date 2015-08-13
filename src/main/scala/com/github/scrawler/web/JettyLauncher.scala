@@ -4,9 +4,11 @@ import org.eclipse.jetty.server.Server
 import org.eclipse.jetty.servlet.DefaultServlet
 import org.eclipse.jetty.webapp.WebAppContext
 import com.github.scrawler.core.ScrawlerConf
+import akka.actor.ActorSystem
 
 object JettyLauncher {
   def main(args: Array[String]) {
+    val system = ActorSystem("Scrawler Actor System")
     val conf    = new ScrawlerConf()
     val server  = new Server(conf.get("scrawler.web.port").toInt)
     val context = new WebAppContext()

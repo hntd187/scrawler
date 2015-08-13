@@ -1,6 +1,5 @@
 import com.github.retronym.SbtOneJar.oneJarSettings
-lazy val scalatraVersion = "2.3.1"
-lazy val akkaVersion     = "2.3.10"
+lazy val akkaVersion     = "2.3.11"
 lazy val tikaVersion     = "1.8"
 mainClass in oneJar := Some("com.github.scrawler.web.JettyLauncher")
 lazy val root = (project in file(".")).settings(
