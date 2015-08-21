@@ -5,6 +5,10 @@ enablePlugins(JettyPlugin)
 lazy val libVer   = "0.1.0-SNAPSHOT"
 lazy val scalaVer = "2.11.7"
 
+addCommandAlias("build", ";clean;compile;package;assembly")
+
+unmanagedResourceDirectories in Compile += { baseDirectory.value / "src/main/webapp" }
+
 lazy val root = (project in file(".")).
   settings(
     organization := "com.github",

@@ -8,7 +8,9 @@ object Dependencies {
   val scalaz      = "org.scalaz"        %% "scalaz-core"       % "7.1.1"
   val scalatest   = "org.scalatest"     %% "scalatest"         % "2.2.1"         % "test"
   val jetty       = "org.eclipse.jetty" %  "jetty-webapp"      % "9.3.0.M2"      % "container;compile"
+  val jettyPlus   = "org.eclipse.jetty" %  "jetty-plus"        % "9.3.0.M2"      % "container;compile"
   val servlet     = "javax.servlet"     %  "javax.servlet-api" % "3.1.0"         % "provided"
+  val logback     = "ch.qos.logback"    %  "logback-classic"   % "1.1.3"
   val akkaActor   = "com.typesafe.akka" %% "akka-actor"        % akkaVersion
   val akkaRemote  = "com.typesafe.akka" %% "akka-remote"       % akkaVersion
   val akkaslf4j   = "com.typesafe.akka" %% "akka-slf4j"        % akkaVersion
@@ -28,7 +30,9 @@ object Dependencies {
     scalaz,
     scalatest,
     jetty,
+    jettyPlus,
     servlet,
+    logback,
     akkaActor,
     akkaRemote,
     akkaslf4j,

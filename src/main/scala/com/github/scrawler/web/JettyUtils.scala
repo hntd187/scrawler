@@ -38,7 +38,7 @@ object JettyUtils {
     val connector = new ServerConnector(server, httpConfig)
     connector.setPort(port)
     connector.setName(serverName)
-    connector.setIdleTimeout(conf.get("scrawler.web.timeout").toLong)
+    connector.setIdleTimeout(conf.get("scrawler.web.timeout", "2400").toLong)
     server.addConnector(connector)
     
     try {
