@@ -2,4 +2,6 @@
 .idea*
 .idea/libraries/*
 project/target/*
+project/project/*
 target/*
+
