@@ -1,25 +1,31 @@
 package io.scrawler.actors
 
-import io.scrawler.core.Logging
-import io.scrawler.job.CrawlJob
-import io.scrawler.messages.{ParseHtmlMessage, UpdateJobMessage}
+import scala.collection.immutable
 
-import akka.actor.{Actor, Props}
+import akka.actor.{Actor, ActorLogging, Props}
+import io.scrawler.core.ExtractedLink
+import io.scrawler.messages.Message
 
-import scala.collection.mutable
+case class UpdateJobMessage(jobId: String, urls: immutable.Set[ExtractedLink]) extends Message
 
-class JobActor extends Actor with Logging {
-  val parserActors = context.actorOf(Props(classOf[ParseHtmlActor]))
-  val crawlJobs = mutable.MutableList.empty[CrawlJob]
+case class CrawlJob(jobId: String, urls: immutable.Set[String])
+
+class JobActor extends Actor with ActorLogging {
+  val parserActors = context.actorOf(ParseHtmlActor())
+
 
   def receive = {
     case msg: CrawlJob =>
-      crawlJobs += msg
-      msg.urls.foreach(u => parserActors ! new ParseHtmlMessage(msg.jobId, u.baseUri))
+      log.info("Got Crawl job message")
+      msg.urls.foreach(u => parserActors ! ParseHtmlMessage(msg.jobId, u))
 
     case msg: UpdateJobMessage =>
+      log.info("Got Update job message")
       val jobId = msg.jobId
-      crawlJobs.filter(cj => cj.jobId == jobId).foreach(f => f.crawledUrls(msg.urls.toSet))
 
   }
+}
+
+object JobActor {
+  def apply(args: Any*) = Props(classOf[JobActor], args)
 }

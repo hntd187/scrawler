@@ -1,10 +1,11 @@
 package io.scrawler.core
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
 private[scrawler] object Utils {
   def getSystemProperties: Map[String, String] = {
-    val props = for ((k, v) <- System.getProperties) yield (k, v)
-    props.toMap
+    (for ((k, v) <- System.getProperties.asScala) yield {
+      (k: String, v: String)
+    }).toMap
   }
 }

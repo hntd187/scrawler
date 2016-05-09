@@ -19,7 +19,7 @@ class ParserTests extends FunSuite with Matchers {
   val parseTimeout: Duration = 20.seconds
 
   test("Should return Links") {
-    val returnLinks = p.jsoupParse(u)
+    val returnLinks = p.parseURL(u)
     returnLinks sameElements expectedLinks shouldBe true
     /*
     returnLinks.onComplete{

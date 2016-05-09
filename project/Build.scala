@@ -2,7 +2,7 @@ import Dependencies._
 import sbt.Keys._
 import sbt._
 
-object ScrawlerBuild extends Build {
+object Build extends Build {
 
   unmanagedResourceDirectories in Compile += {
     baseDirectory.value / "src/main/webapp"

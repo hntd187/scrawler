@@ -10,6 +10,7 @@ object Dependencies {
   lazy val scalaLibVersion = "2.11.8"
   lazy val ficusVersion = "1.2.3"
   lazy val typesafeConfigVersion = "1.3.0"
+  lazy val catsVersion = "0.6.0-M1"
 
   lazy val scalaLib = Seq("org.scala-lang" % "scala-library" % scalaLibVersion)
 
@@ -39,7 +40,8 @@ object Dependencies {
 
   lazy val universalDeps = Seq(
     "com.typesafe" % "config" % typesafeConfigVersion,
-    "com.iheart" %% "ficus" % ficusVersion
+    "com.iheart" %% "ficus" % ficusVersion,
+  "org.typelevel" %% "cats" % catsVersion
   ) ++ loggingDeps ++ scalaLib
 
 
